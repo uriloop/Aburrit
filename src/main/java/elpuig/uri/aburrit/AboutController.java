@@ -47,8 +47,22 @@ public class AboutController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene= new Scene(root);
+        stage=(Stage) back.getScene().getWindow();
+        scene= new Scene(root,420,420);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void switchToSceneGrafic(ActionEvent event){
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("grafic.fxml"));
+        try {
+            root= loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage= (Stage) back.getScene().getWindow();
+        scene= new Scene(root,420,420);
         stage.setScene(scene);
         stage.show();
     }

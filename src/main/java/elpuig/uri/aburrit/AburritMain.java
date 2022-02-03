@@ -16,7 +16,7 @@ public class AburritMain extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(AburritMain.class.getResource("bored.fxml"));
         Parent root= fxmlLoader.load();
-        Scene scene = new Scene(root, 360, 420);
+        Scene scene = new Scene(root, 420, 420);
         stage.setTitle("Bored?");
         stage.setScene(scene);
         stage.getIcons().add(new Image("bored.png"));

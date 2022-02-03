@@ -7,6 +7,10 @@ public class Bored {
     public double price,accessibility;
     /*public MenuItem quit;*/
 
+    public String getLink() {
+        return link;
+    }
+
     public void setActivity(String activity) {
         this.activity = activity;
     }

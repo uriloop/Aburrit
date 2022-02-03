@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -11,12 +12,8 @@
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
+                        <MenuItem fx:id="grafic" mnemonicParsing="false" onAction="#switchToSceneGrafic" text="Grafic" />
                     <MenuItem fx:id="close" mnemonicParsing="false" onAction="#closeApp" text="Close" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
@@ -26,11 +23,16 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <TextArea fx:id="activitat" prefHeight="92.0" prefWidth="570.0">
+            <TextArea fx:id="activitat" editable="false" prefHeight="92.0" prefWidth="570.0">
                <VBox.margin>
                   <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                </VBox.margin>
             </TextArea>
+            <HBox alignment="CENTER" prefWidth="200.0">
+               <children>
+                  <Hyperlink fx:id="link" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER" />
+               </children>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="600.0" spacing="20.0">
                <children>
                   <Label text="Tipus:" />
@@ -43,7 +45,9 @@
             <HBox alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="30.0" prefWidth="600.0" spacing="20.0">
                <children>
                   <Label text="Dificultat:" />
-                  <Slider fx:id="dificultat" />
+                  <RadioButton fx:id="facil" mnemonicParsing="false" text="facil" />
+                  <RadioButton fx:id="mig" mnemonicParsing="false" text="mig" />
+                  <RadioButton fx:id="dificil" mnemonicParsing="false" text="dificil" />
                </children>
                <VBox.margin>
                   <Insets top="12.0" />
@@ -61,7 +65,7 @@
             <HBox alignment="CENTER" layoutX="10.0" layoutY="107.0" prefHeight="30.0" prefWidth="600.0" spacing="20.0">
                <children>
                   <Label text="Preu:" />
-                  <CheckBox fx:id="gratis" mnemonicParsing="false" text="CheckBox" />
+                  <CheckBox fx:id="gratis" mnemonicParsing="false" text="Gratis" />
                </children>
                <VBox.margin>
                   <Insets top="12.0" />
@@ -72,8 +76,8 @@
                   <Insets top="25.0" />
                </VBox.margin>
                <children>
-                  <Button fx:id="reset" mnemonicParsing="false" onAction="#reiniciar" text="Reset" />
-                  <Button fx:id="buscar" mnemonicParsing="false" onAction="#buscar" text="Search" />
+                  <Button fx:id="reset" mnemonicParsing="false" onAction="#reiniciar" text="Resetejar" />
+                  <Button fx:id="buscar" mnemonicParsing="false" onAction="#buscar" text="Buscar" />
                </children>
             </HBox>
          </children>
