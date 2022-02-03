@@ -6,6 +6,7 @@ import java.util.List;
 public class BoredsList {
     List<Bored> boreds;
 
+
     public BoredsList() {
         boreds=new ArrayList<>();
     }
