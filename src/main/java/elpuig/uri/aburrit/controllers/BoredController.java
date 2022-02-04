@@ -1,5 +1,7 @@
-package elpuig.uri.aburrit;
+package elpuig.uri.aburrit.controllers;
 
+import elpuig.uri.aburrit.AburritMain;
+import elpuig.uri.aburrit.model.Bored;
 import elpuig.uri.aburrit.connection.Connection;
 
 import javafx.application.Platform;
@@ -10,7 +12,6 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -19,7 +20,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.*;
 
 public class BoredController implements Initializable {
 
@@ -55,7 +55,7 @@ public class BoredController implements Initializable {
     @FXML
     private void switchToSceneAbout(Event event) {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("about.fxml"));
+        FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("model/about.fxml"));
         try {
             root = loader.load();
         } catch (IOException e) {
@@ -71,7 +71,7 @@ public class BoredController implements Initializable {
     @FXML
     public void switchToSceneGrafic(ActionEvent event){
 
-        FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("grafic.fxml"));
+        FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("model/grafic.fxml"));
         try {
             root= loader.load();
         } catch (IOException e) {

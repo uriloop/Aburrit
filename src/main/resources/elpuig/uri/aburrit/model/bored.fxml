@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elpuig.uri.aburrit.BoredController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elpuig.uri.aburrit.controllers.BoredController">
    <children>
       <VBox layoutX="231.0" layoutY="42.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -23,7 +23,7 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <TextArea fx:id="activitat" editable="false" prefHeight="92.0" prefWidth="570.0">
+            <TextArea fx:id="activitat" editable="false" prefHeight="112.0" prefWidth="576.0">
                <VBox.margin>
                   <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                </VBox.margin>
@@ -39,7 +39,7 @@
                   <ChoiceBox fx:id="tipus" prefWidth="150.0" />
                </children>
                <VBox.margin>
-                  <Insets top="8.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="30.0" prefWidth="600.0" spacing="20.0">
@@ -79,6 +79,9 @@
                   <Button fx:id="reset" mnemonicParsing="false" onAction="#reiniciar" text="Resetejar" />
                   <Button fx:id="buscar" mnemonicParsing="false" onAction="#buscar" text="Buscar" />
                </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
             </HBox>
          </children>
       </VBox>

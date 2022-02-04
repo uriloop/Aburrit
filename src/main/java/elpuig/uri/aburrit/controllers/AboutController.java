@@ -1,5 +1,6 @@
-package elpuig.uri.aburrit;
+package elpuig.uri.aburrit.controllers;
 
+import elpuig.uri.aburrit.AburritMain;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -41,7 +42,7 @@ public class AboutController implements Initializable {
     @FXML
     public void switchToSceneBored(ActionEvent event){
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("bored.fxml"));
+        FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("model/bored.fxml"));
         try {
             root= loader.load();
         } catch (IOException e) {
@@ -55,7 +56,7 @@ public class AboutController implements Initializable {
     @FXML
     public void switchToSceneGrafic(ActionEvent event){
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("grafic.fxml"));
+        FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("model/grafic.fxml"));
         try {
             root= loader.load();
         } catch (IOException e) {

@@ -1,14 +1,11 @@
-package elpuig.uri.aburrit;
+package elpuig.uri.aburrit.utils;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.json.JsonReadContext;
-import com.fasterxml.jackson.core.json.JsonWriteContext;
-import com.fasterxml.jackson.databind.MappingJsonFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import elpuig.uri.aburrit.model.Bored;
+import elpuig.uri.aburrit.model.BoredsList;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 public class JSONcontrol {
 
