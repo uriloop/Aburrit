@@ -1,4 +1,4 @@
-package elpuig.uri.aburrit;
+package elpuig.uri.aburrit.model;
 
 import java.security.Timestamp;
 import java.util.Date;
@@ -72,7 +72,7 @@ public class Bored {
 
     @Override
     public String toString() {
-        return "DoSomething{\n" +
+        return "Bored{\n" +
                 "activitat=" + activity + '\n' +
                 ", tipus=" + type + '\n' +
                 ", participants=" + participants + '\n' +

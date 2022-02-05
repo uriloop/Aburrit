@@ -1,4 +1,4 @@
-package elpuig.uri.aburrit;
+package elpuig.uri.aburrit.model;
 
 import java.util.ArrayList;
 import java.util.List;

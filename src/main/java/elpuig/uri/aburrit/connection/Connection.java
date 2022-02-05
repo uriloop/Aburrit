@@ -3,14 +3,12 @@ package elpuig.uri.aburrit.connection;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import elpuig.uri.aburrit.Bored;
-import elpuig.uri.aburrit.JSONcontrol;
+import elpuig.uri.aburrit.model.Bored;
+import elpuig.uri.aburrit.utils.JSONcontrol;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.MalformedInputException;
-import java.util.List;
 
 public class Connection {
     private String url_source;
@@ -31,7 +29,6 @@ public class Connection {
             url = new URL(sb.toString());
             String json=new ObjectMapper().writeValueAsString(activity = new ObjectMapper().readValue(url, Bored.class));
             jsoNcontrol.saveJSON(activity);
-            System.out.println(json);
         } catch (JsonProcessingException | MalformedInputException e) {
             e.printStackTrace();
         } catch (IOException e) {
