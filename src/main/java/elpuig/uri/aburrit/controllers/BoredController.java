@@ -9,12 +9,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,15 +27,16 @@ public class BoredController implements Initializable {
 
 
     @FXML
-    MenuItem about;
-    @FXML
     Hyperlink link;
-
+    @FXML
+    MenuItem light, dark, darcula,about;
 
     Parent root;
     Stage stage;
     Scene scene;
 
+    @FXML
+    AnchorPane rootPane;
     @FXML
     RadioButton facil, mig, dificil;
     @FXML
@@ -43,9 +46,8 @@ public class BoredController implements Initializable {
     @FXML
     TextArea activitat;
     @FXML
-    Button reset;
-    @FXML
-    Button buscar;
+    Button reset,buscar;
+
     @FXML
     TextField participants;
     Object defaultValueOfChoiceBox;
@@ -69,18 +71,19 @@ public class BoredController implements Initializable {
 
     }
 
+
     @FXML
-    public void switchToSceneGrafic(ActionEvent event){
+    public void switchToSceneGrafic(ActionEvent event) {
 
         FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("model/grafic.fxml"));
         try {
-            root= loader.load();
+            root = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        stage= (Stage) buscar.getScene().getWindow();
-        scene= new Scene(root,420,420);
+        stage = (Stage) buscar.getScene().getWindow();
+        scene = new Scene(root, 420, 420);
         scene.getStylesheets().add(AburritMain.theme);
         stage.setScene(scene);
         stage.show();
@@ -106,6 +109,43 @@ public class BoredController implements Initializable {
         activitat.setWrapText(true);
         activitat.setText(defaultTextMessage);
         link.setText("https://www.boredapi.com/");
+
+
+        // listeners per al cambi de color
+
+        light.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                AburritMain.theme="light.css";
+                // Limpiar los estilos que tuviera anteriormente
+                rootPane.getScene().getStylesheets().clear();
+                // Aplicar la hoja de estilos
+                rootPane.getScene().getStylesheets().add(
+                        (AburritMain.theme));
+            }
+        });
+        dark.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                AburritMain.theme="dark.css";
+                // Limpiar los estilos que tuviera anteriormente
+                rootPane.getScene().getStylesheets().clear();
+                // Aplicar la hoja de estilos
+                rootPane.getScene().getStylesheets().add(
+                        (AburritMain.theme));
+            }
+        });
+        darcula.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                AburritMain.theme="darcula.css";
+                // Limpiar los estilos que tuviera anteriormente
+                rootPane.getScene().getStylesheets().clear();
+                // Aplicar la hoja de estilos
+                rootPane.getScene().getStylesheets().add(
+                        (AburritMain.theme));
+            }
+        });
 
     }
 
@@ -203,9 +243,11 @@ public class BoredController implements Initializable {
         if (!activity.getLink().equals("")) {
             link.setText(activity.getLink());
             link.setVisited(false);
-        }else{
+        } else {
             link.setText("");
         }
 
     }
+
+
 }

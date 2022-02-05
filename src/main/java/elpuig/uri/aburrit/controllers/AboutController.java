@@ -4,6 +4,7 @@ import elpuig.uri.aburrit.AburritMain;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,12 +12,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.EventObject;
 import java.util.ResourceBundle;
 
 public class AboutController implements Initializable {
@@ -35,46 +38,71 @@ public class AboutController implements Initializable {
     MenuItem close;
 
     @FXML
-    public void closeApp(Event event){
+    AnchorPane rootPane;
+
+    @FXML
+    MenuItem light, dark, darcula;
+
+    @FXML
+    public void closeApp(Event event) {
         Platform.exit();
     }
 
     @FXML
-    public void switchToSceneBored(ActionEvent event){
+    public void switchToSceneBored(ActionEvent event) {
 
         FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("model/bored.fxml"));
         try {
-            root= loader.load();
+            root = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        stage=(Stage) back.getScene().getWindow();
-        scene= new Scene(root,420,420);
+        stage = (Stage) back.getScene().getWindow();
+        scene = new Scene(root, 420, 420);
         scene.getStylesheets().add(AburritMain.theme);
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
-    public void switchToSceneGrafic(ActionEvent event){
+    public void setLightTheme(Event event){
+        AburritMain.theme="light.css";
+
+    }
+    @FXML
+    public void setDarkTheme(Event event){
+        AburritMain.theme="dark.css";
+
+    }
+    @FXML
+    public void setDarculaTheme(Event event){
+        AburritMain.theme="darcula.css";
+
+    }
+
+    @FXML
+    public void switchToSceneGrafic(ActionEvent event) {
 
         FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("model/grafic.fxml"));
         try {
-            root= loader.load();
+            root = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        stage= (Stage) back.getScene().getWindow();
-        scene= new Scene(root,420,420);
+        stage = (Stage) back.getScene().getWindow();
+        scene = new Scene(root, 420, 420);
         scene.getStylesheets().add(AburritMain.theme);
         stage.setScene(scene);
         stage.show();
     }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
-        text.setMinSize(200,200);
+        text.setMinSize(200, 200);
         text.setWrapText(true);
         text.setText("About: \n\n" +
                 "What's the purpose behind this API?\n" +
@@ -102,5 +130,42 @@ public class AboutController implements Initializable {
                 "This is awesome! How can I contribute?\n" +
                 "\n" +
                 "Any new suggestions or features would be very helpful! If you have an idea for an activity, we have a suggestion form on the contributing page. Otherwise, feel free to submit a pull request or a feature request.");
+
+
+        // listeners per al cambi de color
+
+        light.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                AburritMain.theme="light.css";
+                // Limpiar los estilos que tuviera anteriormente
+                rootPane.getScene().getStylesheets().clear();
+                // Aplicar la hoja de estilos
+                rootPane.getScene().getStylesheets().add(
+                        (AburritMain.theme));
+            }
+        });
+        dark.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                AburritMain.theme="dark.css";
+                // Limpiar los estilos que tuviera anteriormente
+                rootPane.getScene().getStylesheets().clear();
+                // Aplicar la hoja de estilos
+                rootPane.getScene().getStylesheets().add(
+                        (AburritMain.theme));
+            }
+        });
+        darcula.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                AburritMain.theme="darcula.css";
+                // Limpiar los estilos que tuviera anteriormente
+                rootPane.getScene().getStylesheets().clear();
+                // Aplicar la hoja de estilos
+                rootPane.getScene().getStylesheets().add(
+                        (AburritMain.theme));
+            }
+        });
     }
 }

@@ -11,6 +11,7 @@ import javafx.application.Platform;
 import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -39,15 +41,17 @@ public class GraficController implements Initializable {
     Scene scene;
 
     @FXML
-    Button buscar;
+    AnchorPane rootPane;
     @FXML
-    MenuItem about;
+    Button buscar;
     @FXML
     MenuItem close;
     @FXML
     MenuItem bored;
     @FXML
     MenuItem reset;
+    @FXML
+    MenuItem light, dark, darcula,about;
 
     //tab
     @FXML
@@ -69,6 +73,22 @@ public class GraficController implements Initializable {
 
     // participants
     List<Bored> boredsFiltrats;
+
+    @FXML
+    public void setLightTheme(Event event){
+        AburritMain.theme="light.css";
+
+    }
+    @FXML
+    public void setDarkTheme(Event event){
+        AburritMain.theme="dark.css";
+
+    }
+    @FXML
+    public void setDarculaTheme(Event event){
+        AburritMain.theme="darcula.css";
+
+    }
 
     @FXML
     private void buscar(Event event) {
@@ -155,6 +175,41 @@ public class GraficController implements Initializable {
         participantsChart.getData().setAll(participantsXYCharts);
 
 
+        // listeners per al cambi de color
+
+        light.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                AburritMain.theme="light.css";
+                // Limpiar los estilos que tuviera anteriormente
+                rootPane.getScene().getStylesheets().clear();
+                // Aplicar la hoja de estilos
+                rootPane.getScene().getStylesheets().add(
+                        (AburritMain.theme));
+            }
+        });
+        dark.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                AburritMain.theme="dark.css";
+                // Limpiar los estilos que tuviera anteriormente
+                rootPane.getScene().getStylesheets().clear();
+                // Aplicar la hoja de estilos
+                rootPane.getScene().getStylesheets().add(
+                        (AburritMain.theme));
+            }
+        });
+        darcula.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                AburritMain.theme="darcula.css";
+                // Limpiar los estilos que tuviera anteriormente
+                rootPane.getScene().getStylesheets().clear();
+                // Aplicar la hoja de estilos
+                rootPane.getScene().getStylesheets().add(
+                        (AburritMain.theme));
+            }
+        });
 
     }
 
@@ -169,6 +224,7 @@ public class GraficController implements Initializable {
     public void closeApp(Event event) {
         Platform.exit();
     }
+
 
     @FXML
     private void switchToSceneAbout(Event event) {

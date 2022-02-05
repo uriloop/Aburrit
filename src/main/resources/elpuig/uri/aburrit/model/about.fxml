@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="462.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elpuig.uri.aburrit.controllers.AboutController">
+<AnchorPane fx:id="rootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="462.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elpuig.uri.aburrit.controllers.AboutController">
    <children>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
@@ -18,9 +18,9 @@
               <items>
                   <Menu mnemonicParsing="false" text="Theme">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Light" />
-                        <MenuItem mnemonicParsing="false" text="Dark" />
-                        <MenuItem mnemonicParsing="false" text="Darcula" />
+                      <MenuItem fx:id="light" mnemonicParsing="false"  text="Light" />
+                        <MenuItem fx:id="dark" mnemonicParsing="false" text="Dark" />
+                        <MenuItem fx:id="darcula" mnemonicParsing="false" text="Darcula" />
                     </items>
                   </Menu>
               </items>
