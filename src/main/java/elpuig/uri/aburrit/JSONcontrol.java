@@ -25,7 +25,6 @@ public class JSONcontrol {
         try {
             loadJSON();
 
-
         } catch (IOException e) {
             boreds = new BoredsList();
         }

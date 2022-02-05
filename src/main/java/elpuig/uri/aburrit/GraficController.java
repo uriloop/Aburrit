@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import elpuig.uri.aburrit.connection.Connection;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -37,6 +39,11 @@ public class GraficController implements Initializable {
     Stage stage;
     Scene scene;
 
+
+    @FXML
+    PieChart tipus;
+
+
     @FXML
     Button buscar;
     @FXML
@@ -50,46 +57,65 @@ public class GraficController implements Initializable {
 
     //tab
     @FXML
-    BarChart<String,Integer> dificultat;
+    BarChart<String, Integer> dificultat;
 
     //tab
     @FXML
-    AreaChart<String,Integer> participantsChart;
+    BarChart<String, Integer> participantsChart;
 
     //tab
     @FXML
     TextArea jsonArea;
 
 
-
     // dificultat barres
-    XYChart.Series<String,Integer> barraFacil = new XYChart.Series();
-    XYChart.Series<String,Integer> barraMig = new XYChart.Series();
-    XYChart.Series<String,Integer> barraDificil = new XYChart.Series();
+    XYChart.Series<String, Integer> barraFacil = new XYChart.Series();
+    XYChart.Series<String, Integer> barraMig = new XYChart.Series();
+    XYChart.Series<String, Integer> barraDificil = new XYChart.Series();
 
     // participants
+    // List<XYChart.Series<String, Integer>> opcionsParticipants = new ArrayList<>();
 
 
+
+    /*private List<XYChart.Series<String, Integer>> getparticipantsSeries() {
+        Map<Integer, Integer> mapaParticipants = new HashMap<>();
+        for (Bored bor :
+                boreds.getBoreds()) {
+            if (mapaParticipants.containsKey(bor.getParticipants())) {
+                mapaParticipants.replace(bor.getParticipants(), mapaParticipants.get(bor.getParticipants()) + 1);
+            }
+            mapaParticipants.putIfAbsent(bor.getParticipants(), 1);
+        }
+        System.out.println(mapaParticipants.toString());
+
+        for (int i = 0; i < mapaParticipants.size(); i++) {
+            opcionsParticipants.add(new XYChart.Series<>());
+        }
+        return opcionsParticipants;
+    }*/
 
 
     @FXML
-    private void buscar(Event event){
+    private void buscar(Event event) {
 
         Connection connect = new Connection();
         connect.getRandomActivityToDo("");
 
         // update barres dificultat
-        barraFacil.getData().add(new XYChart.Data<String,Integer>("facil",(int)boreds.getBoreds().stream().filter(a -> a.getAccessibility()<=0.3).count()));
-        barraMig.getData().add(new XYChart.Data<String,Integer>("mig",(int)boreds.getBoreds().stream().filter(a -> a.getAccessibility()>0.3&& a.getAccessibility()<=0.6).count()));
-        barraDificil.getData().add(new XYChart.Data<String,Integer>("dificil",(int)boreds.getBoreds().stream().filter(a -> a.getAccessibility()>0.6).count()));
+        barraFacil.getData().add(new XYChart.Data<String, Integer>("facil", (int) boreds.getBoreds().stream().filter(a -> a.getAccessibility() <= 0.3).count()));
+        barraMig.getData().add(new XYChart.Data<String, Integer>("mig", (int) boreds.getBoreds().stream().filter(a -> a.getAccessibility() > 0.3 && a.getAccessibility() <= 0.6).count()));
+        barraDificil.getData().add(new XYChart.Data<String, Integer>("dificil", (int) boreds.getBoreds().stream().filter(a -> a.getAccessibility() > 0.6).count()));
 
         // update textarea json
         try {
-            boreds=jsonC.load();
+            boreds = jsonC.load();
             jsonArea.setText(new ObjectMapper().writeValueAsString(boreds));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+//        getparticipantsSeries();
+
     }
 
     @Override
@@ -107,42 +133,26 @@ public class GraficController implements Initializable {
 
 
         // iniciem la taula de dificultat
-        barraFacil.getData().add(new XYChart.Data<String,Integer>("facil",(int)boreds.getBoreds().stream().filter(a -> a.getAccessibility()<=0.3).count()));
-        barraMig.getData().add(new XYChart.Data<String,Integer>("mig",(int)boreds.getBoreds().stream().filter(a -> a.getAccessibility()>0.3&& a.getAccessibility()<=0.6).count()));
-        barraDificil.getData().add(new XYChart.Data<String,Integer>("dificil",(int)boreds.getBoreds().stream().filter(a -> a.getAccessibility()>0.6).count()));
+        barraFacil.getData().add(new XYChart.Data<String, Integer>("facil", (int) boreds.getBoreds().stream().filter(a -> a.getAccessibility() <= 0.3).count()));
+        barraMig.getData().add(new XYChart.Data<String, Integer>("mig", (int) boreds.getBoreds().stream().filter(a -> a.getAccessibility() > 0.3 && a.getAccessibility() <= 0.6).count()));
+        barraDificil.getData().add(new XYChart.Data<String, Integer>("dificil", (int) boreds.getBoreds().stream().filter(a -> a.getAccessibility() > 0.6).count()));
         dificultat.getData().add(barraFacil);
         dificultat.getData().add(barraMig);
         dificultat.getData().add(barraDificil);
 
-        /*// iniciem el grafic de participants
-        Collection<Bored> integers=boreds.getBoreds().stream().collect(Collectors.toMap(Bored::getParticipants, p -> p, (p, q) -> p)).values();
-        int numOpcions=integers.size();
-        List<XYChart.Series<String,Integer>> participantsXYCharts= new ArrayList<>();
-        for (Bored bor:
-             integers) {
-            participantsXYCharts.add(new XYChart.Series<Integer,Integer>().getData().add(new XYChart.Data<Integer,Integer>(
-                    bor.getParticipants(),(int)integers.stream().filter(a -> a.getParticipants()==bor.getParticipants())
-            )));
-        }
-        */
-        /*List<Bored> bors=boreds.getBoreds().stream().filter(distinctByKey(p -> p.getFname()).distinct().collect(Collectors.toList());
+        //List<Integer> distinctNumbers= boreds.getBoreds().stream().map(a -> a.getParticipants()).distinct().collect(Collectors.toList());
 
-        Stream<Bored> distincts=boreds.getBoreds()
-                .stream()
-                .distinct();
-        List<XYChart.Series<String,Integer>> participantsXYCharts= new ArrayList<>();*/
-        // per cada numero de participants diferent.
-        /*for (Bored bor:
-             distincts.toList()) {
-            // per cada opció diferent he de fer un label de tipus de valor, més tard per cada contar tots els casos en que el valor és igual a aquest label.
-            // és a dir. fer un distinct per quedar-me totes les opcions possibles. després fer un count on filter = a.getParticipants==label.getParticipants();
-            *//* participantsXYCharts.add(
-                    new XYChart.Series<Integer,Integer>().getData().add( new XYChart.Data<Integer,Integer>((int)bor.getParticipants(),
-                            (int) boreds.getBoreds()
-                            .stream()
-                            .filter(a -> a.getParticipants()== bor.getParticipants()).count())));*//*
+        // tipus
 
-        }*/
+        tipus.getData().add(new PieChart.Data("Recreatonial "+(boreds.getBoreds().stream().filter(a -> a.getType().equals("recreational")).count()),boreds.getBoreds().stream().filter(a -> a.getType().equals("Recreational")).count()));
+        tipus.getData().add(new PieChart.Data("Educational "+(boreds.getBoreds().stream().filter(a -> a.getType().equals("education")).count()),boreds.getBoreds().stream().filter(a -> a.getType().equals("Recreational")).count()));
+        tipus.getData().add(new PieChart.Data("Relaxation "+(boreds.getBoreds().stream().filter(a -> a.getType().equals("relaxation")).count()),boreds.getBoreds().stream().filter(a -> a.getType().equals("Recreational")).count()));
+        tipus.getData().add(new PieChart.Data("Social "+(boreds.getBoreds().stream().filter(a -> a.getType().equals("social")).count()),boreds.getBoreds().stream().filter(a -> a.getType().equals("Recreational")).count()));
+        tipus.getData().add(new PieChart.Data("DIY "+(boreds.getBoreds().stream().filter(a -> a.getType().equals("diy")).count()),boreds.getBoreds().stream().filter(a -> a.getType().equals("Recreational")).count()));
+        tipus.getData().add(new PieChart.Data("Charity "+(boreds.getBoreds().stream().filter(a -> a.getType().equals("charity")).count()),boreds.getBoreds().stream().filter(a -> a.getType().equals("Recreational")).count()));
+        tipus.getData().add(new PieChart.Data("Cooking "+(boreds.getBoreds().stream().filter(a -> a.getType().equals("cooking")).count()),boreds.getBoreds().stream().filter(a -> a.getType().equals("Recreational")).count()));
+        tipus.getData().add(new PieChart.Data("Music "+(boreds.getBoreds().stream().filter(a -> a.getType().equals("music")).count()),boreds.getBoreds().stream().filter(a -> a.getType().equals("Recreational")).count()));
+        tipus.getData().add(new PieChart.Data("Busywork "+(boreds.getBoreds().stream().filter(a -> a.getType().equals("busywork")).count()),boreds.getBoreds().stream().filter(a -> a.getType().equals("Recreational")).count()));
 
 
     }
@@ -168,8 +178,9 @@ public class GraficController implements Initializable {
         stage.show();
 
     }
+
     @FXML
-    private void resetDades(Event event){
+    private void resetDades(Event event) {
 
 
         Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -179,34 +190,38 @@ public class GraficController implements Initializable {
         alert.close();
         jsonC.deleteDades();
         try {
-            boreds=jsonC.load();
+            boreds = jsonC.load();
             jsonArea.setText(new ObjectMapper().writeValueAsString(boreds));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
 
         // fem update de les columnes
-        barraFacil.getData().add(new XYChart.Data<String,Integer>("facil",(int)boreds.getBoreds().stream().filter(a -> a.getAccessibility()<=0.3).count()));
-        barraMig.getData().add(new XYChart.Data<String,Integer>("mig",(int)boreds.getBoreds().stream().filter(a -> a.getAccessibility()>0.3&& a.getAccessibility()<=0.6).count()));
-        barraDificil.getData().add(new XYChart.Data<String,Integer>("dificil",(int)boreds.getBoreds().stream().filter(a -> a.getAccessibility()>0.6).count()));
+        barraFacil.getData().add(new XYChart.Data<String, Integer>("facil", (int) boreds.getBoreds().stream().filter(a -> a.getAccessibility() <= 0.3).count()));
+        barraMig.getData().add(new XYChart.Data<String, Integer>("mig", (int) boreds.getBoreds().stream().filter(a -> a.getAccessibility() > 0.3 && a.getAccessibility() <= 0.6).count()));
+        barraDificil.getData().add(new XYChart.Data<String, Integer>("dificil", (int) boreds.getBoreds().stream().filter(a -> a.getAccessibility() > 0.6).count()));
+
+        // getparticipantsSeries();
 
     }
 
     @FXML
-    public void switchToSceneBored(ActionEvent event){
+    public void switchToSceneBored(ActionEvent event) {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("bored.fxml"));
         try {
-            root= loader.load();
+            root = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        stage= (Stage) jsonArea.getScene().getWindow();
-        scene= new Scene(root,420,420);
+        stage = (Stage) jsonArea.getScene().getWindow();
+        scene = new Scene(root, 420, 420);
         stage.setScene(scene);
         stage.show();
     }
 
+    private void refreshOnTabChange() {
 
+    }
 
 }

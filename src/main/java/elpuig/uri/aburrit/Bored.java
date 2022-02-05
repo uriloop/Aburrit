@@ -1,5 +1,10 @@
 package elpuig.uri.aburrit;
 
+import java.security.Timestamp;
+import java.util.Date;
+
+import static java.lang.System.currentTimeMillis;
+
 public class Bored {
 
     public String activity,type,link;
@@ -33,8 +38,8 @@ public class Bored {
     }
 
     public void setKey(Number key) {
-
         this.key = (int)key;
+
     }
 
     public void setAccessibility(Number accessibility) {
