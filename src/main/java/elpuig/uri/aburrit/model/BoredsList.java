@@ -22,4 +22,6 @@ public class BoredsList {
     public void add(Bored bored) {
         boreds.add(bored);
     }
+
+
 }

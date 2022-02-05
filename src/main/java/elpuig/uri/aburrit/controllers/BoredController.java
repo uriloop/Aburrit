@@ -63,6 +63,7 @@ public class BoredController implements Initializable {
         }
         stage = (Stage) buscar.getScene().getWindow();
         scene = new Scene(root, 420, 420);
+        scene.getStylesheets().add(AburritMain.theme);
         stage.setScene(scene);
         stage.show();
 
@@ -80,6 +81,7 @@ public class BoredController implements Initializable {
 
         stage= (Stage) buscar.getScene().getWindow();
         scene= new Scene(root,420,420);
+        scene.getStylesheets().add(AburritMain.theme);
         stage.setScene(scene);
         stage.show();
     }

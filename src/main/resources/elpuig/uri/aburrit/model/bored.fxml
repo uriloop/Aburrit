@@ -16,6 +16,17 @@
                     <MenuItem fx:id="close" mnemonicParsing="false" onAction="#closeApp" text="Close" />
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="Edit">
+                     <items>
+                        <Menu mnemonicParsing="false" text="Theme">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#changeTheme" text="Light" />
+                              <MenuItem mnemonicParsing="false" onAction="#changeTheme" text="Dark" />
+                              <MenuItem mnemonicParsing="false" onAction="#changeTheme" text="Darcula" />
+                          </items>
+                        </Menu>
+                     </items>
+                  </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                      <items>
                         <MenuItem id="aboutApp" fx:id="about" mnemonicParsing="false" onAction="#switchToSceneAbout" text="AboutApp" />

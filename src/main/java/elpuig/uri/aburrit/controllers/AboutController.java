@@ -50,6 +50,7 @@ public class AboutController implements Initializable {
         }
         stage=(Stage) back.getScene().getWindow();
         scene= new Scene(root,420,420);
+        scene.getStylesheets().add(AburritMain.theme);
         stage.setScene(scene);
         stage.show();
     }
@@ -64,6 +65,7 @@ public class AboutController implements Initializable {
         }
         stage= (Stage) back.getScene().getWindow();
         scene= new Scene(root,420,420);
+        scene.getStylesheets().add(AburritMain.theme);
         stage.setScene(scene);
         stage.show();
     }
