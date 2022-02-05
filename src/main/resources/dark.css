@@ -277,6 +277,7 @@
 .radio-button:selected, .dot:selected {
     -fx-padding: 2px;
 }
+
 .radio-button .radio{
     -fx-border-width: 1px;
     -fx-background-color: #1a1a1a;
