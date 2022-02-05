@@ -17,7 +17,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.EventObject;
 import java.util.ResourceBundle;
@@ -103,8 +103,10 @@ public class AboutController implements Initializable {
 
 
         text.setMinSize(200, 200);
-        text.setWrapText(true);
-        text.setText("About: \n\n" +
+
+
+        text.setText(
+                "\nAbout: \n\n" +
                 "What's the purpose behind this API?\n" +
                 "\n" +
                 "The Bored API helps you find things to do when you're bored! There are fields like the number of participants, activity type, and more that help you narrow down your results.\n" +
@@ -130,6 +132,10 @@ public class AboutController implements Initializable {
                 "This is awesome! How can I contribute?\n" +
                 "\n" +
                 "Any new suggestions or features would be very helpful! If you have an idea for an activity, we have a suggestion form on the contributing page. Otherwise, feel free to submit a pull request or a feature request.");
+
+
+
+        text.setWrapText(true);
 
 
         // listeners per al cambi de color

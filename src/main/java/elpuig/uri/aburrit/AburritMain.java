@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class AburritMain extends Application {
 
-    public static String theme= "darcula.css";
+    public static String theme= "dark.css";
 
     @Override
     public void start(Stage stage) throws IOException {
