@@ -118,14 +118,18 @@
 }
 
 .button:hover {
-    -fx-background-color: #2f5a7a;
-    -fx-border-color: #313335;
+    -fx-border-color: #298dcc;
 
 }
-
+.choice-box:hover , .check-box:hover .box , .radio-button:hover .radio, .text-field:hover{
+    -fx-border-width: 1;
+    -fx-border-color: #298dcc;
+}
 .button:pressed {
     -fx-border-width: 2px;
     -fx-border-color: #298ecd;
+    -fx-background-color: rgba(41, 141, 204, 0.66);
+
 }
 
 #rootPane {

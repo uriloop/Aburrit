@@ -1,5 +1,5 @@
 .root{
-    -fx-background-color: #2D2D30;
+    -fx-background-color: #24242a;
 }
 
 
@@ -39,11 +39,11 @@
     -fx-pref-height: 25;
 }
 .text-field:hover{
-    -fx-border-color: #222222;
-    -fx-background-color: #3E3E40;
+    -fx-border-color: #245440;
+    -fx-background-color: rgba(36, 84, 64, 0.65);
 }
 .text-field:focused{
-    -fx-border-color: #007ACC;
+    -fx-border-color: #245440;
     -fx-background-color: #1A1A1A;
 }
 
@@ -150,17 +150,17 @@
     -fx-pref-height: 25;
 }
 .button:focused{
-    -fx-border-color: #007ACC;
     -fx-background-color: #1A1A1A;
 }
-.button:hover{
-    -fx-border-color: #222222;
-    -fx-background-color: #3E3E40;
+.button:hover , .text-field:hover , .check-box:hover .box, .radio-button:hover .radio{
+    -fx-border-color: #245440;
+    -fx-background-color: rgba(25, 70, 53, 0.75);
+    -fx-border-width: 1px;
     -fx-cursor: HAND;
 }
 .button:pressed{
-    -fx-border-color: #007ACC;
-    -fx-background-color: #007ACC;
+    -fx-border-color: #245440;
+    -fx-background-color: #245440;
     -fx-cursor: HAND;
 }
 
@@ -183,10 +183,9 @@
     -fx-background-color: #1A1A1A;
 }
 .check-box:focused > .box{
-    -fx-border-color: #007ACC;
+    -fx-border-color: #245440;
 }
 .check-box:hover > .box{
-    -fx-background-color: #3E3E40;
     -fx-background-insets: 0 0 1 0;
     -fx-cursor: HAND;
 }
@@ -198,7 +197,7 @@
     -fx-background-color: #AFB1B3;
 }
 .check-box:pressed > .box > .mark{
-    -fx-background-color: #007ACC;
+    -fx-background-color: #245440;
 }
 
 
@@ -212,16 +211,15 @@
     -fx-background-color: #1A1A1A;
 }
 .text-area:hover{
-    -fx-border-color: #3E3E40;
+    -fx-border-color: #245440;
 }
 .text-area:focused{
-    -fx-border-color: #007ACC;
+    -fx-border-color: #245440;
     -fx-background-color: #1A1A1A;
 }
 .text-area .content{
     -fx-background-radius: 0;
     -fx-border-width: 0;
-    -fx-background-radius: 0;
     -fx-background-color: #1A1A1A;
 }
 .text-area .scroll-bar{
@@ -235,14 +233,14 @@
 /* ScrollBar */
 .scroll-bar{
     -fx-background-radius: 0;
-    -fx-background-color: #2A2A2C;
+    -fx-background-color: #212123;
 }
 .scroll-bar vertical{
     -fx-background-radius: 0;
-    -fx-background-color: #2A2A2C;
+    -fx-background-color: #212123;
 }
 .scroll-bar > .decrement-button{
-    -fx-background-color: #2A2A2C;
+    -fx-background-color: #212123;
     -fx-background-radius: 0;
     -fx-border-width: 0;
     -fx-cursor: HAND;
@@ -255,7 +253,9 @@
 }
 .scroll-bar .decrement-button:hover,
 .scroll-bar .increment-button:hover{
-    -fx-background-color: #007ACC;
+    -fx-background-color: #245440;
+-fx-border-width: 2px;
+    -fx-border-color: #276249;
 }
 .scroll-bar:vertical  .increment-arrow,
 .scroll-bar:vertical  .decrement-arrow,
@@ -286,7 +286,7 @@
     -fx-background-insets: 0;
 }
 .choice-box {
-    -fx-background-color: #2A2A2C;
+    -fx-background-color: #212123;
     -fx-border-width: 1;
     -fx-border-color: #747a80;
     -fx-border-radius: 4px;
@@ -294,33 +294,37 @@
 
 /* Menu */
 .menu-bar {
-    -fx-background-color: #2D2D30;
+    -fx-background-color: #24242AFF;
     -fx-border-width: 0;
 }
 .menu-bar .menu-button{
-    -fx-background: #007ACC;
+    -fx-background: #24242AFF;
     -fx-text-fill: #AFB1B3;
     -fx-min-height: 20;
     -fx-pref-height: 20;
     -fx-padding: 0 5 0 5;
     -fx-cursor: HAND;
 }
+.menu-button:hover{
+    -fx-background-color: #245440;
+
+}
 .menu-item{
     -fx-background-radius: 0;
     -fx-border-width: 0;
     -fx-text-fill: #AFB1B3;
-    -fx-background-color: #1A1A1A;
+    -fx-background-color: #24242AFF;
 }
 .menu-item:hover {
-    -fx-background-color: #3E3E40;
+    -fx-background-color: #245440;
     -fx-cursor: HAND;
 }
 .menu-item:pressed {
-    -fx-background-color: #007ACC;
+    -fx-background-color: #245440;
     -fx-cursor: HAND;
 }
 .context-menu {
-    -fx-background-color: #1A1A1A;
+    -fx-background-color: #24242AFF;
     -fx-border-width: 0;
     -fx-padding: 0 0 -1 0;
 }
@@ -331,7 +335,7 @@
     -fx-background-color: transparent;
 }
 .progress-bar .bar{
-    -fx-background-color: #007ACC;
+    -fx-background-color: #1b1a1f;
     -fx-background-radius: 0;
     -fx-padding: 3;
     -fx-background-insets: 0;
@@ -362,13 +366,13 @@
     -fx-cursor: HAND;
 }
 .slider:focused .thumb{
-    -fx-border-color: #007ACC;
+    -fx-border-color: #245440;
 }
 .slider .thumb:hover{
-    -fx-background-color: #3E3E40;
+    -fx-background-color: #245440;
 }
 .slider .thumb:pressed{
-    -fx-background-color: #007ACC;
+    -fx-background-color: #245440;
 }
 
 
@@ -390,7 +394,7 @@
     -fx-border-color: #3E3E40;
 }
 .tree-view:focused {
-    -fx-border-color: #007ACC;
+    -fx-border-color: #245440;
 }
 .tree-cell{
     -fx-background-color: #1A1A1A;
@@ -408,7 +412,7 @@
     -fx-background-color: #3E3E40;
 }
 .tree-cell:pressed{
-    -fx-background-color: #007ACC;
+    -fx-background-color: #245440;
 }
 .tree-cell > .tree-disclosure-node > .arrow
 {
@@ -416,7 +420,7 @@
 }
 .tree-cell:hover > .tree-disclosure-node > .arrow
 {
-    -fx-background-color: #007ACC;
+    -fx-background-color: #245440;
 }
 
 /* Charts */
@@ -424,8 +428,12 @@
     -fx-text-fill: #869299;
 
 }
+.text-area:focused, .text-field:focused{
+    -fx-border-color: #245440;
+
+}
 .context-menu{
-    -fx-background-color: rgb(69, 73, 74);
+    -fx-background-color: rgb(60, 63, 65);
     -fx-border-style: hidden;
     -fx-stroke-type: none;
     -fx-padding: 1px;
@@ -464,7 +472,7 @@
     -fx-pref-height: 20;
 }
 .tab:selected{
-    -fx-background-color: #007ACC;
+    -fx-background-color: #245440;
 }
 .tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
     -fx-border-color: transparent;
@@ -516,7 +524,7 @@
 .table-view:focused{
     -fx-border-width: 1;
     -fx-border-radius: 0;
-    -fx-border-color: #007ACC;
+    -fx-border-color: #245440;
     -fx-background-insets: 1;
     -fx-background-radius: 0;
     -fx-background-color: #1A1A1A;
@@ -533,7 +541,7 @@
     -fx-border-color: #222222;
 }
 .table-view .column-resize-line {
-    -fx-background-color: #007ACC;
+    -fx-background-color: #245440;
     -fx-pref-width: 1;
 }
 .table-row-cell{
