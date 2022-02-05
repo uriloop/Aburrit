@@ -1,0 +1,153 @@
+.root .content {
+
+    -fx-background-color: #2b2b2b;
+    -fx-text-fill: white;
+
+}
+
+#rootPane .content {
+
+    -fx-background-color: #2b2b2b;
+    -fx-text-fill: white;
+
+}
+
+.stage {
+    -fx-background-color: black;
+}
+
+.menu-bar {
+    -fx-background-color: #3f3c3c;
+    -fx-border-width: 1;
+    -fx-border-color: #343232;
+
+}
+
+.menu-button {
+    -fx-background-color: #3f3c3c;
+    -fx-border-width: 0;
+
+}
+
+.menu-button:focused {
+    -fx-background-color: #2c2e2f;
+}
+
+.text {
+    -fx-text-fill: white;
+}
+
+.menu {
+    -fx-background-color: #3f3c3c;
+    -fx-border-width: 0;
+
+}
+
+.menu-item {
+    -fx-background-color: #3c3f41;
+    -fx-border-width: 0;
+}
+
+.menu-item:focused, .menu-item:collapsed, .menu:hover {
+    -fx-background-color: #2c2e2f;
+}
+
+.button {
+    -fx-background-color: #3c3f41;
+    -fx-border-color: #2b2b2b;
+    -fx-text-fill: white;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #3c3f41;
+
+}
+.tabs{
+    -fx-background-color: #3c3f41;
+
+}
+.tab-pane .tab .text {
+    -fx-text-fill: #eeeeee;
+
+}
+
+.button:hover {
+    -fx-background-color: #2b2b2b;
+    -fx-border-color: #313335;
+}
+
+.button:pressed {
+    -fx-background-color: #2b2b2b;
+    -fx-border-color: #313335;
+}
+
+#rootPane {
+    -fx-background-color: #3c3f41;
+
+}
+
+.label {
+    -fx-text-fill: #b4b4b4;
+}
+
+.check-box .box {
+    -fx-background-color: #2b2b2b;
+    -fx-background-radius: 4;
+}
+
+.check-box:selected .box {
+    -fx-border-color: #2b2b2b;
+    -fx-border-radius: 4;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: grey;
+}
+
+.check-box .label {
+    -fx-text-fill: #b4b4b4;
+}
+
+.radio-button .radio {
+    -fx-border-width: 1px;
+    -fx-background-color: #2b2b2b;
+    -fx-border-radius: 15px;
+    -fx-padding: 3px;
+    -fx-background-insets: 0;
+}
+
+.radio-button:selected, .dot:selected {
+    -fx-padding: 8px;
+}
+
+.button, .text-field .content {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #3c3f41;
+}
+
+.text-field, .text-area {
+    -fx-background-color: #2b2b2b;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-text-fill: #fdfdfe;
+    -fx-background-insets: 0;
+}
+
+.choice-box {
+    -fx-background-color: #3c3f41;
+    -fx-border-width: 1;
+    -fx-border-color: #2b2b2b;
+}
+
+.scroll-bar {
+    -fx-background-color: #2b2b2b;
+}
+
+.scroll-bar .scroll {
+    -fx-background-color: #2b2b2b;
+}
+
+.chart{
+    -fx-text-fill: white;
+}

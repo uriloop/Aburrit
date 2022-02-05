@@ -1,45 +1,61 @@
 .root {
     -fx-font-size: 14px;
-    -fx-background-color: rgb(191, 196, 159);
+    -fx-text-fill: white;
+    -fx-background-color: rgb(28, 28, 28);
 }
 .button{
-    -fx-background-color: #f3ffa8;
-    -fx-border-color: #a4b616;
-
+    -fx-background-color: #252525;
+    -fx-border-color: #000000
 }
 
-.button:pressed{
-    -fx-background-color: #e1ff00;
-    -fx-border-color: #e6ff1f;
-
+.button:pressed {
+    -fx-background-color: #181818;
+    -fx-border-color: #000000;
 }
 
 .radio-button .radio{
     -fx-border-width: 1px;
-    -fx-background-color: #f3ffa8;
+    -fx-background-color: #000000;
     -fx-border-radius: 15px;
     -fx-padding: 3px;
     -fx-background-insets: 0;
 }
 
-
-
+#rootPane{
+    -fx-background-color: #3b3b3b;
+}
+.menu-bar{
+    -fx-background-color: #111111;
+}
 .radio-button .dot {
-    -fx-background-color: #546c4b;
+    -fx-background-color: #3f3f3f;
+    -fx-padding: 8px;
+}
+.textareacolor{
+    -fx-background-color: black;
+}
+
+.radio-button:selected .dot:selected {
+    -fx-background-color: #ffffff;
     -fx-background-radius: 15px;
     -fx-padding: 8px;
 }
 
-.radio-button .dot:selected {
-    -fx-background-color: #4cf10e;
-    -fx-background-radius: 15px;
-    -fx-padding: 8px;
+/*estils de lletres uniformes a tots el camps de txt*/
+.check-box .content, .button, .radio, .text-field {
+    -fx-text-fill: white;
 }
-
 /*quan estem a un textarea o field seleccionat*/
-.text-field:focused, .text-area:focused {
-    -fx-background-color:
-            rgb(230, 255, 31),
-            rgb(50, 56, 6),
-            rgb(84, 108, 75);
+
+.text-field:focused , .check-box:focused, .check-box:selected  , .check-box:selected, .text-area:focused{
+    -fx-border-color:
+            rgb(80, 79, 79),
+            rgb(112, 112, 112),
+            rgb(136, 136, 136);
 }
+
+
+.text-area .content ,.menu-bar .menu-item, .choice-box .content, .list-view, .scroll-bar, .tab-pane, .scroll-bar{
+    -fx-background-color: #000000 ;
+}
+
