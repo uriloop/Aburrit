@@ -48,7 +48,7 @@ public class AboutController implements Initializable {
     }
 
     /**Retorna a l'escena principal
-     * @param event
+     * @param event parametre d'entrada del metode
      */
     @FXML
     private  void switchToSceneBored(ActionEvent event) {
@@ -68,7 +68,7 @@ public class AboutController implements Initializable {
 
 
     /**Realitaza el cambi d'escena a l'escena dels grafics
-     * @param event
+     * @param event parametre d'entrada del metode
      */
     @FXML
     private  void switchToSceneGrafic(ActionEvent event) {
@@ -88,8 +88,8 @@ public class AboutController implements Initializable {
 
 
     /** metode sobreescrit que s'executa al llançar l'escena
-     * @param url
-     * @param resourceBundle
+     * @param url parametre d'entrada del metode
+     * @param resourceBundle parametre d'entrada del metode
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

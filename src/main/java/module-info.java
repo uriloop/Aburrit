@@ -1,3 +1,6 @@
+/**
+ * Modul del projecte
+ */
 module elpuig.uri.aburrit {
     requires javafx.controls;
     requires javafx.fxml;

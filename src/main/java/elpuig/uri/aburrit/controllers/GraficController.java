@@ -82,7 +82,7 @@ public class GraficController implements Initializable {
      * Executa una busqueda aleatoria per a poder veure els cambis als gràfics en temps real.
      * carrega els cambis als diferents gràfics de cada tab
      *
-     * @param event
+     * @param event parametre d'entrada del metode
      */
     @FXML
     private void buscar(Event event) {
@@ -200,8 +200,8 @@ public class GraficController implements Initializable {
      * -carrega els diferents tabs amb la informació
      * -creem els Listeners per al cambi de tema de la app.
      *
-     * @param url
-     * @param resourceBundle
+     * @param url parametre d'entrada del metode
+     * @param resourceBundle parametre d'entrada del metode
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -357,9 +357,9 @@ public class GraficController implements Initializable {
     /**
      * Metode per a comparar els boreds per participants
      *
-     * @param keyExtractor
-     * @param <T>
-     * @return
+     * @param keyExtractor parametre d'entrada del metode
+     * @param <T> parametre d'entrada del metode
+     * @return parametre de sortida
      */
     private static <T> Predicate<T> distinctByKey(
             Function<? super T, ?> keyExtractor) {
@@ -371,7 +371,7 @@ public class GraficController implements Initializable {
     /**
      * Finalitza l'aplicació
      *
-     * @param event
+     * @param event parametre d'entrada del metode
      */
     @FXML
     private void closeApp(Event event) {
@@ -382,7 +382,7 @@ public class GraficController implements Initializable {
     /**
      * Executa el cambi d'escena a l'escena about
      *
-     * @param event
+     * @param event parametre d'entrada del metode
      */
     @FXML
     private void switchToSceneAbout(Event event) {
@@ -404,7 +404,7 @@ public class GraficController implements Initializable {
     /**
      * Elimina totes les dades de l'arxiu dades.json i per tant reinicia totes les estadístiques
      *
-     * @param event
+     * @param event parametre d'entrada del metode
      */
     @FXML
     private void resetDades(Event event) {
@@ -455,7 +455,7 @@ public class GraficController implements Initializable {
     /**
      * Executa el cambi d'escena a l'escena principal
      *
-     * @param event
+     * @param event parametre d'entrada del metode
      */
     @FXML
     private void switchToSceneBored(ActionEvent event) {

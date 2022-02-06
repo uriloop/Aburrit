@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Aburrit" options="--add-exports javafx.controls/com.sun.javafx.scene.control.skin=elpuig.uri.aburrit" />
+      <module name="Aburrit" options="" />
     </option>
   </component>
 </project>

@@ -17,8 +17,8 @@ public class AburritMain extends Application {
     public static String theme= "styles/darcula.css";
 
     /**Metode sobreescrit que executa la app
-     * @param stage
-     * @throws IOException
+     * @param stage parametre d'entrada del metode
+     * @throws IOException excepció del metode
      */
     @Override
     public void start(Stage stage) throws IOException {
@@ -33,7 +33,7 @@ public class AburritMain extends Application {
     }
 
     /**El fil principal per executar la app
-     * @param args
+     * @param args parametre d'entrada del metode
      */
     public static void main(String[] args) {
         launch();

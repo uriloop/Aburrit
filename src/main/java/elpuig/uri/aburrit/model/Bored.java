@@ -23,35 +23,35 @@ public class Bored {
     }
 
     /**Setter per a construir l'element
-     * @param activity
+     * @param activity parametre d'entrada del metode
      */
     public void setActivity(String activity) {
         this.activity = activity;
     }
 
     /**Setter per a construir l'element
-     * @param type
+     * @param type parametre d'entrada del metode
      */
     public void setType(String type) {
         this.type = type;
     }
 
     /**Setter per a construir l'element
-     * @param participants
+     * @param participants parametre d'entrada del metode
      */
     public void setParticipants(Number participants) {
         this.participants = (int)participants;
     }
 
     /**Setter per a construir l'element
-     * @param price
+     * @param price parametre d'entrada del metode
      */
     public void setPrice(Number price) {
         this.price = price.doubleValue();
     }
 
     /**Setter per a construir l'element
-     * @param link
+     * @param link parametre d'entrada del metode
      */
     public void setLink(String link) {
         if (link==null) this.link="";
@@ -59,7 +59,7 @@ public class Bored {
     }
 
     /**Setter per a construir l'element
-     * @param key
+     * @param key parametre d'entrada del metode
      */
     public void setKey(Number key) {
         this.key = (int)key;
@@ -67,7 +67,7 @@ public class Bored {
     }
 
     /**Setter per a construir l'element
-     * @param accessibility
+     * @param accessibility parametre d'entrada del metode
      */
     public void setAccessibility(Number accessibility) {
         this.accessibility =accessibility.doubleValue();

@@ -59,7 +59,7 @@ public class BoredController implements Initializable {
 
 
     /**ÇExecuta un cambi d'escena a a l'escena about
-     * @param event
+     * @param event parametre d'entrada del metode
      */
     @FXML
     private void switchToSceneAbout(Event event) {
@@ -80,7 +80,7 @@ public class BoredController implements Initializable {
 
 
     /**Executa un cambi d'escena a l'escena dels grafics
-     * @param event
+     * @param event parametre d'entrada del metode
      */
     @FXML
     private  void switchToSceneGrafic(ActionEvent event) {
@@ -101,7 +101,7 @@ public class BoredController implements Initializable {
 
 
     /**Apaga l'aplicació
-     * @param event
+     * @param event parametre d'entrada del metode
      */
     @FXML
     private void closeApp(Event event) {
@@ -112,8 +112,8 @@ public class BoredController implements Initializable {
      * -creem la llista del choice box
      * -editem alguns paramtres i mostrem el text d'explicació .
      * -creem els Listeners per al cambi de tema de la app.
-     * @param url
-     * @param resourceBundle
+     * @param url parametre d'entrada del metode
+     * @param resourceBundle parametre d'entrada del metode
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
