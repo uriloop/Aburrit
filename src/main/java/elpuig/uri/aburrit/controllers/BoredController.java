@@ -21,43 +21,50 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
+/**
+ * Controller del model Bored
+ */
 public class BoredController implements Initializable {
 
 
     @FXML
-    Hyperlink link;
+   private Hyperlink link;
     @FXML
-    MenuItem light, dark, darcula,about;
+    private MenuItem light, dark, darcula, about;
 
-    Parent root;
-    Stage stage;
-    Scene scene;
-
-    @FXML
-    AnchorPane rootPane;
-    @FXML
-    RadioButton facil, mig, dificil;
-    @FXML
-    ChoiceBox tipus;
-    @FXML
-    CheckBox gratis;
-    @FXML
-    TextArea activitat;
-    @FXML
-    Button reset,buscar;
+    private Parent root;
+   private  Stage stage;
+   private  Scene scene;
 
     @FXML
-    TextField participants;
-    Object defaultValueOfChoiceBox;
-    String defaultTextMessage = "Escull les opcions que prefereixis (o no escullis res) i troba una activitat per vencer l'avorriment!";
+  private   AnchorPane rootPane;
+    @FXML
+   private  RadioButton facil, mig, dificil;
+    @FXML
+  private   ChoiceBox tipus;
+    @FXML
+  private   CheckBox gratis;
+    @FXML
+   private  TextArea activitat;
+    @FXML
+  private   Button reset, buscar;
+
+    @FXML
+  private   TextField participants;
+  private   Object defaultValueOfChoiceBox;
+  private   String defaultTextMessage = "Escull les opcions que prefereixis (o no escullis res) i troba una activitat per vencer l'avorriment!";
 
 
+    /**ÇExecuta un cambi d'escena a a l'escena about
+     * @param event
+     */
     @FXML
     private void switchToSceneAbout(Event event) {
 
-        FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("model/about.fxml"));
+        FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("fxml/about.fxml"));
         try {
             root = loader.load();
         } catch (IOException e) {
@@ -65,17 +72,20 @@ public class BoredController implements Initializable {
         }
         stage = (Stage) buscar.getScene().getWindow();
         scene = new Scene(root, 420, 420);
-        scene.getStylesheets().add(AburritMain.theme);
+        scene.getStylesheets().add(AburritMain.class.getResource(AburritMain.theme).toExternalForm());
         stage.setScene(scene);
         stage.show();
 
     }
 
 
+    /**Executa un cambi d'escena a l'escena dels grafics
+     * @param event
+     */
     @FXML
-    public void switchToSceneGrafic(ActionEvent event) {
+    private  void switchToSceneGrafic(ActionEvent event) {
 
-        FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("model/grafic.fxml"));
+        FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("fxml/grafic.fxml"));
         try {
             root = loader.load();
         } catch (IOException e) {
@@ -84,17 +94,27 @@ public class BoredController implements Initializable {
 
         stage = (Stage) buscar.getScene().getWindow();
         scene = new Scene(root, 420, 420);
-        scene.getStylesheets().add(AburritMain.theme);
+        scene.getStylesheets().add(AburritMain.class.getResource(AburritMain.theme).toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
 
 
+    /**Apaga l'aplicació
+     * @param event
+     */
     @FXML
-    public void closeApp(Event event) {
+    private void closeApp(Event event) {
         Platform.exit();
     }
 
+    /**Metode sobreescrit que executem a iniciar l'escena.
+     * -creem la llista del choice box
+     * -editem alguns paramtres i mostrem el text d'explicació .
+     * -creem els Listeners per al cambi de tema de la app.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -110,46 +130,48 @@ public class BoredController implements Initializable {
         activitat.setText(defaultTextMessage);
         link.setText("https://www.boredapi.com/");
 
-
-        // listeners per al cambi de color
+        // listeners per al cambi de color o tema de l'aplicació
 
         light.setOnAction(new EventHandler() {
             @Override
             public void handle(Event event) {
-                AburritMain.theme="light.css";
+                AburritMain.theme = "styles/light.css";
                 // Limpiar los estilos que tuviera anteriormente
                 rootPane.getScene().getStylesheets().clear();
                 // Aplicar la hoja de estilos
                 rootPane.getScene().getStylesheets().add(
-                        (AburritMain.theme));
+                        AburritMain.class.getResource(AburritMain.theme).toExternalForm());
             }
         });
         dark.setOnAction(new EventHandler() {
             @Override
             public void handle(Event event) {
-                AburritMain.theme="dark.css";
+                AburritMain.theme = "styles/dark.css";
                 // Limpiar los estilos que tuviera anteriormente
                 rootPane.getScene().getStylesheets().clear();
                 // Aplicar la hoja de estilos
                 rootPane.getScene().getStylesheets().add(
-                        (AburritMain.theme));
+                        AburritMain.class.getResource(AburritMain.theme).toExternalForm());
             }
         });
         darcula.setOnAction(new EventHandler() {
             @Override
             public void handle(Event event) {
-                AburritMain.theme="darcula.css";
+                AburritMain.theme = "styles/darcula.css";
                 // Limpiar los estilos que tuviera anteriormente
                 rootPane.getScene().getStylesheets().clear();
                 // Aplicar la hoja de estilos
                 rootPane.getScene().getStylesheets().add(
-                        (AburritMain.theme));
+                        AburritMain.class.getResource(AburritMain.theme).toExternalForm());
             }
         });
 
     }
 
 
+    /**
+     * Reinicia els valors del formulari
+     */
     @FXML
     private void reiniciar() {
 
@@ -166,17 +188,64 @@ public class BoredController implements Initializable {
         link.setText("https://www.boredapi.com/");
     }
 
+    /**
+     * Gestiona la búsqueda convertint el formulari en un string de parametres. Adamés conecta amb la api i mostra el resultat
+     */
     @FXML
     private void buscar() {
 
+
+        // construim un String amb els parametres per enviar-los a la connection i rebre un objecte bored (activitat) i mostrar-lo
         Bored activity;
         StringBuilder sb = new StringBuilder();
 
-        // Afegir el preu a gratis si cal
-        if (gratis.isSelected()) sb.append("?price=0.0&");
+        // Afegir un tipus/categoria si cal
+
+        String tipusString = "";
+        try {
+            tipusString = tipus.getValue().toString();
+        } catch (NullPointerException e) {
+        } // No s'ha seleccionat cap valor del choice box i per tant el seu valor actual és null.
+
+        switch (tipusString.toLowerCase(Locale.ROOT)) {
+            case "education":
+                sb.append("&type=education");
+                break;
+            case "recreational":
+                sb.append("&type=recreational");
+                break;
+            case "social":
+                sb.append("&type=social");
+                break;
+            case "diy":
+                sb.append("&type=diy");
+                break;
+            case "charity":
+                sb.append("&type=charity");
+                break;
+            case "cooking":
+                sb.append("&type=cooking");
+                break;
+            case "relaxation":
+                sb.append("&type=relaxation");
+                break;
+            case "music":
+                sb.append("&type=music");
+                break;
+            case "busywork":
+                sb.append("&type=busywork");
+                break;
+            case "":
+                break;
+
+        }
+
 
         // triar o no els participants
-        if (!participants.getText().equals("")) sb.append("?participants=" + participants.getText() + "&");
+        if (!participants.getText().equals("")) sb.append("&participants=").append(participants.getText());
+
+        // Afegir el preu a gratis si cal
+        if (gratis.isSelected()) sb.append("&price=0.0");
 
         // comprobar els rangs de dificultat (es poden seleccionar varies dificultats)
         float max = 0.0f, min = 0.0f;
@@ -193,59 +262,35 @@ public class BoredController implements Initializable {
             if (max == 0) max = 0.3f;
         }
         if (max == 0 && min == 0) {
+            // descartem el cas en que no s'escull res
+        } else {
+            sb.append("&minaccessibility=").append(String.valueOf(min)).append("&maxaccessibility=").append(String.valueOf(max));
 
-        } else
-            sb.append("?minaccessibility=").append(String.valueOf(min)).append("&maxaccessibility=").append(String.valueOf(max)).append("&");
-
-        // Afegir un tipus/categoria si cal
-        if (tipus.isShowing()) {
-            switch (tipus.getValue().toString()) {
-                case "Education":
-                    sb.append("?type=education&");
-                    break;
-                case "Recreational":
-                    sb.append("?type=recreational&");
-                    break;
-                case "Social":
-                    sb.append("?type=social&");
-                    break;
-                case "DIY":
-                    sb.append("?type=diy&");
-                    break;
-                case "Charity":
-                    sb.append("?type=charity&");
-                    break;
-                case "Cooking":
-                    sb.append("?type=cooking&");
-                    break;
-                case "Relaxation":
-                    sb.append("?type=relaxation&");
-                    break;
-                case "Music":
-                    sb.append("?type=music&");
-                    break;
-                case "Busywork":
-                    sb.append("?type=busywork&");
-                    break;
-                case "":
-                    break;
-            }
         }
+
         // fer la conexió que ens retorna un objecte model.
         Connection connect = new Connection();
-        activity = connect.getRandomActivityToDo(sb.toString());
 
+// aquest try vigila que no falli la conexió a causa de:  la resposta de la api és un json predefinit d'error i per tant no pot convertir-lo.
+        // si passa aixó carreguem un missatge d'error i evitem el fallo
+        try {
+            activity = connect.getRandomActivityToDo(sb.toString());
 
-        //Passar les dades a la textArea de la escena
-        activitat.setText(activity.getActivity() + "\nTipus: " + activity.getType() + "\nParticipants: " + activity.getParticipants() + "\nDificulat: " + activity.getAccessibility() + "\nPreu: " + activity.getPrice());
+            //Passar les dades a la textArea de la escena
+            activitat.setText(activity.getActivity() + "\nTipus: " + activity.getType() + "\nParticipants: " + activity.getParticipants() + "\nDificulat: " + activity.getAccessibility() + "\nPreu: " + activity.getPrice());
 
-        // passar el link al label
-        if (!activity.getLink().equals("")) {
-            link.setText(activity.getLink());
-            link.setVisited(false);
-        } else {
-            link.setText("");
+            // passar el link al label
+            if (!activity.getLink().equals("")) {
+                link.setText(activity.getLink());
+                link.setVisited(false);
+            } else {
+                link.setText("");
+            }
+
+        } catch (Exception e) {
+            activitat.setText("error: No activity found with the specified parameters");
         }
+
 
     }
 

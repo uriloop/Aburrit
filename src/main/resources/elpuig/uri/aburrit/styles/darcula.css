@@ -4,7 +4,7 @@
 }
 
 .chart .axis{
-    -fx-text-fill: #869299;
+    -fx-text-fill: #a5b1b6;
 
 }
 
@@ -116,7 +116,9 @@
     -fx-text-fill: #a5b1b6
 
 }
-
+#tipusChart .content, #tipusChart> .chart-legend-item{
+    -fx-text-fill: #a5b1b6;
+}
 .button:hover {
     -fx-border-color: #298dcc;
 
@@ -164,15 +166,36 @@
 .anchor-pane{
     -fx-background-color: grey;
 }
+.default-color0.chart-pie { -fx-pie-color: #ffd700; }
+.default-color1.chart-pie { -fx-pie-color: #c65450; }
+.default-color2.chart-pie { -fx-pie-color: #499b54; }
+.default-color3.chart-pie { -fx-pie-color: #3e859f; }
+.default-color4.chart-pie { -fx-pie-color: #b05b2e; }
+.default-color5.chart-pie { -fx-pie-color: #d27ff8; }
+.default-color6.chart-pie { -fx-pie-color: #842768; }
+.default-color7.chart-pie { -fx-pie-color: #9b0202; }
+.default-color8.chart-pie { -fx-pie-color: #51d39b; }
+.default-color9.chart-pie { -fx-pie-color: #509130; }
+.chart-pie {
+    -fx-stroke: #2b2b2b;
+
+    -fx-border-width: 1px;
+    -fx-border-color: #2b2b2b;
+    -fx-fill: #2b2b2b;
+}
+
+.chart-pie-label { /*this is what you need for labels*/
+    -fx-fill: #ffffff;
+    -fx-font-size: 1em;
+}
 
 .chart-legend-item-symbol{
-    -fx-text-fill: #a5b1b6
+    -fx-text-fill: #a5b1b6;
 
 }
 .chart-legend-item{
-
+    -fx-tick-label-fill: #fdfdfe;
     -fx-text-fill: #a5b1b6
-
 
 }
 .axis-label, .axis {

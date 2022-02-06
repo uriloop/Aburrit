@@ -5,10 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import elpuig.uri.aburrit.AburritMain;
 import elpuig.uri.aburrit.model.Bored;
 import elpuig.uri.aburrit.model.BoredsList;
-import elpuig.uri.aburrit.utils.JSONcontrol;
+import elpuig.uri.aburrit.accesdata.JSONcontrol;
 import elpuig.uri.aburrit.connection.Connection;
 import javafx.application.Platform;
-import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -26,70 +25,65 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ * Controler dels grafics
+ */
 public class GraficController implements Initializable {
 
-    JSONcontrol jsonC;
-    BoredsList boreds;
+    private JSONcontrol jsonC;
+    private BoredsList boreds;
 
-    Parent root;
-    Stage stage;
-    Scene scene;
+    private Parent root;
+    private Stage stage;
+    private Scene scene;
 
     @FXML
-    AnchorPane rootPane;
+    private AnchorPane rootPane;
     @FXML
-    Button buscar;
+    private Button buscar;
     @FXML
-    MenuItem close;
+    private MenuItem close;
     @FXML
-    MenuItem bored;
+    private MenuItem bored;
     @FXML
-    MenuItem reset;
+    private MenuItem reset;
     @FXML
-    MenuItem light, dark, darcula,about;
-
-    //tab
-    @FXML
-    BarChart<String, Integer> dificultat;
+    private MenuItem light, dark, darcula, about;
 
     //tab
     @FXML
-    BarChart<String, Integer> participantsChart;
+    private BarChart<String, Integer> dificultat;
 
     //tab
     @FXML
-    TextArea jsonArea;
+    private BarChart<String, Integer> participantsChart;
 
+    //tab
+    @FXML
+    private TextArea jsonArea;
+
+    @FXML
+    private PieChart tipusChart;
 
     // dificultat barres
-    XYChart.Series<String, Integer> barraFacil = new XYChart.Series();
-    XYChart.Series<String, Integer> barraMig = new XYChart.Series();
-    XYChart.Series<String, Integer> barraDificil = new XYChart.Series();
+    private XYChart.Series<String, Integer> barraFacil = new XYChart.Series();
+    private XYChart.Series<String, Integer> barraMig = new XYChart.Series();
+    private XYChart.Series<String, Integer> barraDificil = new XYChart.Series();
 
     // participants
-    List<Bored> boredsFiltrats;
+    private List<Bored> boredsFiltrats;
 
-    @FXML
-    public void setLightTheme(Event event){
-        AburritMain.theme="light.css";
 
-    }
-    @FXML
-    public void setDarkTheme(Event event){
-        AburritMain.theme="dark.css";
-
-    }
-    @FXML
-    public void setDarculaTheme(Event event){
-        AburritMain.theme="darcula.css";
-
-    }
-
+    /**
+     * Executa una busqueda aleatoria per a poder veure els cambis als gràfics en temps real.
+     * carrega els cambis als diferents gràfics de cada tab
+     *
+     * @param event
+     */
     @FXML
     private void buscar(Event event) {
 
@@ -130,18 +124,98 @@ public class GraficController implements Initializable {
 
         participantsChart.getData().setAll(participantsXYCharts);
 
+        // tipus
+
+        tipusChart.getData().clear();
+        PieChart.Data slice = new PieChart.Data("recreational "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("recreational"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("recreational"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("education "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("education"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("education"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("social "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("social"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("social"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("diy "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("diy"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("diy"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("charity "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("charity"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("charity"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("cooking "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("cooking"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("cooking"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("relaxation "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("relaxation"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("relaxation"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("music "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("music"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("music"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("busywork "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("busywork"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("busywork"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+
+
     }
 
+    /**
+     * S'executa al iniciar l'aplicació
+     * -carrega una llista d'activitats (boreds) de l'arxiu dades.json
+     * -carrega els diferents tabs amb la informació
+     * -creem els Listeners per al cambi de tema de la app.
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        // carreguem els
         this.jsonC = new JSONcontrol();
         boreds = jsonC.load();
 
 
         // omplim el text area amb el json
+
         try {
-            jsonArea.setText(new ObjectMapper().writeValueAsString(boreds));
-        } catch (JsonProcessingException e) {
+            jsonArea.setText(jsonC.getJSONasString());
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -180,56 +254,140 @@ public class GraficController implements Initializable {
         light.setOnAction(new EventHandler() {
             @Override
             public void handle(Event event) {
-                AburritMain.theme="light.css";
+                AburritMain.theme = "styles/light.css";
                 // Limpiar los estilos que tuviera anteriormente
                 rootPane.getScene().getStylesheets().clear();
                 // Aplicar la hoja de estilos
                 rootPane.getScene().getStylesheets().add(
-                        (AburritMain.theme));
+                        AburritMain.class.getResource(AburritMain.theme).toExternalForm());
             }
         });
         dark.setOnAction(new EventHandler() {
             @Override
             public void handle(Event event) {
-                AburritMain.theme="dark.css";
+                AburritMain.theme = "styles/dark.css";
                 // Limpiar los estilos que tuviera anteriormente
                 rootPane.getScene().getStylesheets().clear();
                 // Aplicar la hoja de estilos
                 rootPane.getScene().getStylesheets().add(
-                        (AburritMain.theme));
+                        AburritMain.class.getResource(AburritMain.theme).toExternalForm());
             }
         });
         darcula.setOnAction(new EventHandler() {
             @Override
             public void handle(Event event) {
-                AburritMain.theme="darcula.css";
+                AburritMain.theme = "styles/darcula.css";
                 // Limpiar los estilos que tuviera anteriormente
                 rootPane.getScene().getStylesheets().clear();
                 // Aplicar la hoja de estilos
                 rootPane.getScene().getStylesheets().add(
-                        (AburritMain.theme));
+                        AburritMain.class.getResource(AburritMain.theme).toExternalForm());
             }
         });
 
+        // tipus
+
+        tipusChart.getData().clear();
+        PieChart.Data slice = new PieChart.Data("recreational "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("recreational"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("recreational"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("education "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("education"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("education"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("social "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("social"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("social"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("diy "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("diy"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("diy"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("charity "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("charity"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("charity"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("cooking "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("cooking"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("cooking"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("relaxation "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("relaxation"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("relaxation"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("music "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("music"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("music"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("busywork "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("busywork"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("busywork"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+
     }
 
-    public static <T> Predicate<T> distinctByKey(
+    /**
+     * Metode per a comparar els boreds per participants
+     *
+     * @param keyExtractor
+     * @param <T>
+     * @return
+     */
+    private static <T> Predicate<T> distinctByKey(
             Function<? super T, ?> keyExtractor) {
 
         Map<Object, Boolean> seen = new ConcurrentHashMap<>();
         return t -> seen.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
     }
 
+    /**
+     * Finalitza l'aplicació
+     *
+     * @param event
+     */
     @FXML
-    public void closeApp(Event event) {
+    private void closeApp(Event event) {
         Platform.exit();
     }
 
 
+    /**
+     * Executa el cambi d'escena a l'escena about
+     *
+     * @param event
+     */
     @FXML
     private void switchToSceneAbout(Event event) {
 
-        FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("model/about.fxml"));
+        FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("fxml/about.fxml"));
         try {
             root = loader.load();
         } catch (IOException e) {
@@ -237,12 +395,17 @@ public class GraficController implements Initializable {
         }
         stage = (Stage) jsonArea.getScene().getWindow();
         scene = new Scene(root, 420, 420);
-        scene.getStylesheets().add(AburritMain.theme);
+        scene.getStylesheets().add(AburritMain.class.getResource(AburritMain.theme).toExternalForm());
         stage.setScene(scene);
         stage.show();
 
     }
 
+    /**
+     * Elimina totes les dades de l'arxiu dades.json i per tant reinicia totes les estadístiques
+     *
+     * @param event
+     */
     @FXML
     private void resetDades(Event event) {
 
@@ -289,10 +452,15 @@ public class GraficController implements Initializable {
 
     }
 
+    /**
+     * Executa el cambi d'escena a l'escena principal
+     *
+     * @param event
+     */
     @FXML
-    public void switchToSceneBored(ActionEvent event) {
+    private void switchToSceneBored(ActionEvent event) {
 
-        FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("model/bored.fxml"));
+        FXMLLoader loader = new FXMLLoader(AburritMain.class.getResource("fxml/bored.fxml"));
         try {
             root = loader.load();
         } catch (IOException e) {
@@ -300,7 +468,7 @@ public class GraficController implements Initializable {
         }
         stage = (Stage) jsonArea.getScene().getWindow();
         scene = new Scene(root, 420, 420);
-        scene.getStylesheets().add(AburritMain.theme);
+        scene.getStylesheets().add(AburritMain.class.getResource(AburritMain.theme).toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

@@ -13,6 +13,6 @@ module elpuig.uri.aburrit {
     opens elpuig.uri.aburrit.controllers to javafx.fxml;
     exports elpuig.uri.aburrit.model;
     opens elpuig.uri.aburrit.model to javafx.fxml;
-    exports elpuig.uri.aburrit.utils;
-    opens elpuig.uri.aburrit.utils to javafx.fxml;
+    exports elpuig.uri.aburrit.accesdata;
+    opens elpuig.uri.aburrit.accesdata to javafx.fxml;
 }
