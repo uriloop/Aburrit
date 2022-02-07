@@ -19,7 +19,7 @@ public class JSONcontrol {
      * Constructor de la classe on carreguem el file dades.json
      */
     public JSONcontrol() {
-        file = new File("dades.json");
+        file = new File("src/main/resources/dades.json");
     }
 
     /**Carrega els boreds del file dades.json, afegeix el nou bored passat per parametre,

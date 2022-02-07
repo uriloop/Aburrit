@@ -449,7 +449,72 @@ public class GraficController implements Initializable {
         }
         participantsChart.getData().setAll(participantsXYCharts);
 
+        // tipus
 
+        tipusChart.getData().clear();
+        PieChart.Data slice = new PieChart.Data("recreational "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("recreational"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("recreational"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("education "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("education"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("education"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("social "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("social"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("social"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("diy "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("diy"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("diy"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("charity "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("charity"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("charity"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("cooking "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("cooking"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("cooking"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("relaxation "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("relaxation"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("relaxation"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("music "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("music"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("music"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
+        slice = new PieChart.Data("busywork "+boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("busywork"))
+                .count(), boreds.getBoreds().stream()
+                .filter(p -> p.getType().equals("busywork"))
+                .count()
+        );
+        tipusChart.getData().add(slice);
     }
 
     /**
