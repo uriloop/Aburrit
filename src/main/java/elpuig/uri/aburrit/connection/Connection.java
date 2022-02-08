@@ -44,7 +44,6 @@ public class Connection {
         StringBuilder sb = new StringBuilder(url_source2).append(params);
         try {
             url = new URL(sb.toString());
-            System.out.println(url.toString());
             String json=new ObjectMapper().writeValueAsString(activity = new ObjectMapper().readValue(url, Bored.class));
             jsoNcontrol.saveJSON(activity);
         } catch (JsonProcessingException | MalformedInputException e) {
